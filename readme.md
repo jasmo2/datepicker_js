@@ -48,3 +48,8 @@ let config = {
 
 datepicker(config);
 ```
+
+#### Modular packages
+#### standarJS
+#### bundler
+#### unit testing
