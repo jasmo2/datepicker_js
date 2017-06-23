@@ -1,5 +1,14 @@
 {
   "devDependencies": {
-    "eslint-config-rallycoding": "^3.2.0"
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "standard": "^10.0.2",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "scripts": {
+    "standard": "standard src/*.js",
+    "standard:fix": "standard --fix",
+    "dev": "webpack-dev-server --color --watch"
   }
 }
