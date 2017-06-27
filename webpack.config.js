@@ -1,3 +1,5 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 const path = require('path')
 const webpack = require('webpack')
 
@@ -17,7 +19,8 @@ module.exports = {
   entry: {
     app: [
       'babel-polyfill',
-      `${JS_SRC_DIR}/main.js`
+      `${JS_SRC_DIR}/main.js`,
+      `${JS_SRC_DIR}/styles/main.css`
     ]
   },
 
@@ -35,11 +38,15 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      { test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       }
     ]
   },
 
   plugins: [
+    new ExtractTextPlugin('./main.css'),
     new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
     new webpack.NamedModulesPlugin()
   ],

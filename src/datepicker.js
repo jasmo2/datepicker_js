@@ -6,5 +6,5 @@ const DEFAULT_VALUES = {
 
 export default (props) => {
   const newProps = Object.assign({}, DEFAULT_VALUES, props)
-  debugger
+  
 }
