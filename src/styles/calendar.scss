@@ -1,11 +1,12 @@
 $calendar-height: 450px;
 $calendar-font-size: 18px;
+$transition-time: 500ms;
 
 .form-item {
   position: relative;
   .calendar {
+    background-color: white;
     bottom: - $calendar-height;
-    background-color: blue;
     box-shadow: -9px 9px 5px -6px black;
     color: white;
     display: flex;
@@ -15,14 +16,14 @@ $calendar-font-size: 18px;
     font-size: $calendar-font-size;
     height: $calendar-height;
     transform: translateY(-20px);
-    transition: all 500ms;
+    transition: background-color $transition-time;
     visibility : hidden;
     width: 100%;
     &--active {
-      visibility : visible;
-      transition: all 600ms;
+      background-color: blue;
+      transition: background-color $transition-time ease;
       transform: translateY(0px);
-      transition: all 0.5s;
+      visibility : visible;
     }
 
     &__month {
