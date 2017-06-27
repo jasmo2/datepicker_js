@@ -1,0 +1,24 @@
+body {
+  line-height: 1.2;
+  background-color: #1D1F20;
+}
+
+h1 {
+  color: whitesmoke;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+}

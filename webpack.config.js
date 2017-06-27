@@ -20,7 +20,7 @@ module.exports = {
     app: [
       'babel-polyfill',
       `${JS_SRC_DIR}/main.js`,
-      `${JS_SRC_DIR}/styles/main.css`
+      `${JS_SRC_DIR}/styles/app.scss`
     ]
   },
 
@@ -39,8 +39,16 @@ module.exports = {
           presets: ['es2015']
         }
       },
-      { test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'css-loader'
+          }, {
+            loader: 'sass-loader'
+          }],
+          fallback: 'style-loader'
+        })
       }
     ]
   },
