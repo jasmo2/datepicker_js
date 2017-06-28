@@ -1,9 +1,10 @@
 const calendarHtml = `
-    <div class="calendar__month" >
+    <div class="calendar">
+    < div class="calendar__month" >
         <div class="calendar__prev">&lt;&lt;</div>
         <div class="calendar__month-name">June</div>
         <div class="calendar__next">&gt;&gt;</div>
-    </div>
+                </div>
 
     <div class="calendar__week-days">
         <div class="calendar__days">Su</div>
@@ -61,6 +62,6 @@ const calendarHtml = `
             <div class="calendar__date"></div>
         </div>
     </div>
-`
+</div> '
 
 export default calendarHtml
