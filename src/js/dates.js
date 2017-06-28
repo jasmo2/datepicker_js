@@ -1,6 +1,6 @@
 import MyDate from '../utils/Date'
 
-function clickable({ target, date, input }) {
+function clickable ({ target, date, input }) {
   input.value = new Date(date.getFullYear(), date.getMonth(), target.textContent).toDateString()
   const calendar = input.parentElement.querySelector('.calendar')
   calendar.className = calendar.className.replace('calendar--active', '')
@@ -33,7 +33,6 @@ function rows ({ datesEl, initialDate, input }) {
       datesHtml += `<div class="calendar__date ${active}">${daysLeft}</div>`
     }
 
-
     rowsHtml = `${rowsHtml}<div class="calendar__row">${datesHtml}</div>`
     initialDay = 0
   }
@@ -42,7 +41,6 @@ function rows ({ datesEl, initialDate, input }) {
     .forEach(el => el.addEventListener('click',
       (e) => clickable({target: e.target, date: myDate.date, input}))
     )
-  // datesEl.querySelectorAll('.calendar__date--active')
   return datesEl
 }
 

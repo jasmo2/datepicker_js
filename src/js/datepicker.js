@@ -12,13 +12,8 @@ function presentCalendar ({ calendar }) {
   calendar.className += ' calendar--active'
 }
 
-function hideCalendar ({ calendar }) {
-  calendar.className = calendar.className.replace('calendar--active', '')
-}
-
 function togglePresentation ({ input, calendar }) {
   input.onfocus = () => presentCalendar({ calendar })
-  // input.onblur = () => hideCalendar({ calendar })
 }
 class DatePicker {
   constructor (props) {
@@ -28,10 +23,12 @@ class DatePicker {
   init () {
     let input = document.getElementById(this.state.id)
     let calendar = document.createElement('div')
+    const properties = {...this.state, input}
+    const calendarHeader = new CalendarHeader(properties)
     calendar.className = 'calendar'
-    calendar.appendChild(new CalendarHeader())
+    calendar.appendChild(calendarHeader.render())
     calendar.appendChild(new CalendarWeekDays())
-    calendar.appendChild(new CalendarDates({...this.state, input}))
+    calendar.appendChild(new CalendarDates(properties))
     input.parentElement.appendChild(calendar)
     togglePresentation({ calendar, input })
   }
