@@ -18,7 +18,7 @@ function hideCalendar ({ calendar }) {
 
 function togglePresentation ({ input, calendar }) {
   input.onfocus = () => presentCalendar({ calendar })
-  input.onblur = () => hideCalendar({ calendar })
+  // input.onblur = () => hideCalendar({ calendar })
 }
 class DatePicker {
   constructor (props) {
@@ -31,7 +31,7 @@ class DatePicker {
     calendar.className = 'calendar'
     calendar.appendChild(new CalendarHeader())
     calendar.appendChild(new CalendarWeekDays())
-    calendar.appendChild(new CalendarDates(this.state))
+    calendar.appendChild(new CalendarDates({...this.state, input}))
     input.parentElement.appendChild(calendar)
     togglePresentation({ calendar, input })
   }
