@@ -36,7 +36,7 @@ module.exports = {
         include: path.resolve(JS_SRC_DIR),
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets: ['es2015']
+          presets: ['es2015', 'stage-2']
         }
       },
       {

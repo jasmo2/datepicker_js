@@ -1,6 +1,5 @@
-import MyDate from '../utils/Date'
-import calendarHtml from './calendarHtml'
 import CalendarHeader from './header'
+import CalendarWeekDays from './weeks'
 import CalendarDates from './dates'
 
 const DEFAULT_VALUES = {
@@ -23,12 +22,7 @@ function togglePresentation ({ input, calendar }) {
 }
 class DatePicker {
   constructor (props) {
-    this.state = {
-      html: calendarHtml
-    }
-    // let date = new MyDate()
-    // console.log(date.getDate())
-    this.state = Object.assign({}, this.state, DEFAULT_VALUES, props)
+    this.state = Object.assign({}, DEFAULT_VALUES, props)
   }
 
   init () {
@@ -36,7 +30,8 @@ class DatePicker {
     let calendar = document.createElement('div')
     calendar.className = 'calendar'
     calendar.appendChild(new CalendarHeader())
-    calendar.appendChild(new CalendarDates())
+    calendar.appendChild(new CalendarWeekDays())
+    calendar.appendChild(new CalendarDates(this.state))
     input.parentElement.appendChild(calendar)
     togglePresentation({ calendar, input })
   }
