@@ -12,6 +12,7 @@ class CalendarDates {
 
   clickable ({ target, date, input }) {
     input.value = new Date(date.getFullYear(), date.getMonth(), target.textContent).toDateString()
+    input.placeholder = ''
     const calendar = input.parentElement.querySelector('.calendar')
     calendar.className = calendar.className.replace('calendar--active', '')
   }
@@ -34,7 +35,7 @@ class CalendarDates {
         }
       }
       for (let date = initialDay; date < 7; date += 1) {
-        let active = null
+        let active = ''
         if (daysLeft < daysInMonth && actualMonth) {
           if (daysLeft >= (today - 1)) active = 'calendar__date--active'
         } else if (actualMonth) {

@@ -16,9 +16,9 @@ describe('CalendarDates Class', () => {
     it ('get 31 days for Jan', () => {
       const calendar = new CalendarDates(properties)
       const { rowsHtml } = calendar.rows({ initialDate: properties.initialDate })
-      const janDay = Array.from({length: 31}, (v, k) => `${k + 1}`)
+      const janDays = Array.from({length: 31}, (v, k) => `${k + 1}`)
 
-      expect(rowsHtml.match(/\d+/g)).toEqual(expect.arrayContaining(janDay))
+      expect(rowsHtml.match(/\d+/g)).toEqual(expect.arrayContaining(janDays))
     })
   })
 })
