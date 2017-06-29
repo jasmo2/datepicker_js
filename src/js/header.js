@@ -64,7 +64,8 @@ class CalendarHeader {
     setInitialDate(newInitialDate)
     const myDate = new MyDate(newInitialDate)
     monthEl.innerText = myDate.monthName()
-    input.parentElement.querySelector('.calendar').appendChild(new CalendarDates({ input, initialDate: newInitialDate }))
+    const calendarDates = new CalendarDates({ input, initialDate: newInitialDate })
+    input.parentElement.querySelector('.calendar').appendChild(calendarDates.render())
   }
 
   setInitialDate (val) {

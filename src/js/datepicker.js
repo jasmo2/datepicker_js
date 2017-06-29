@@ -33,10 +33,11 @@ class DatePicker {
     let calendar = document.createElement('div')
     const properties = {...this.state, input}
     const calendarHeader = new CalendarHeader(properties)
+    const calendarDates = new CalendarDates(properties)
     calendar.className = 'calendar'
     calendar.appendChild(calendarHeader.render())
     calendar.appendChild(new CalendarWeekDays())
-    calendar.appendChild(new CalendarDates(properties))
+    calendar.appendChild(calendarDates.render())
     input.parentElement.appendChild(calendar)
     togglePresentation({ calendar, input })
     hideCalendar({ body, calendar, input })
