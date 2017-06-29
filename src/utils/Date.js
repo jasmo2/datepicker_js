@@ -1,11 +1,11 @@
-const monthSNames = ['January', 'February', 'March', 'April', 'May', 'June',
+const monthSNames = [
+  'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
 class MyDate {
   constructor (props) {
     this.date = props
-
     this.daysInMonth = this.daysInMonth.bind(this)
     this.daysPrevInMonth = this.daysPrevInMonth.bind(this)
   }
