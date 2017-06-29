@@ -17,10 +17,6 @@
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
-  "standard": {
-    "parser": "babel-eslint"
-  },
-  
   "scripts": {
     "standard": "standard src/*.js",
     "standard:test": "standard __test__/*.js",    

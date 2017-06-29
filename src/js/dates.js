@@ -16,7 +16,7 @@ class CalendarDates {
     calendar.className = calendar.className.replace('calendar--active', '')
   }
 
-  rows ({ initialDate, input }) {
+  rows ({ initialDate }) {
     const myDate = new MyDate(initialDate)
     const today = myDate.date.getDate()
     let initialDay = myDate.date.getDay()
