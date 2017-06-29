@@ -9,12 +9,13 @@ function clickable ({ target, date, input }) {
 function rows ({ datesEl, initialDate, input }) {
   const myDate = new MyDate(initialDate)
   const today = myDate.date.getDate()
-  let initialDay = myDate.date.getDay() + 1
+  let initialDay = myDate.date.getDay()
   let daysInMonth = myDate.daysInMonth()
   let daysPrevInMonth = myDate.daysPrevInMonth()
   let daysLeft = 0
   let rowsHtml = ''
-  for (let row = 0; row < 5; row += 1) {
+  let actualMonth = true
+  for (let row = 0; row < 6; row += 1) {
     let datesHtml = ''
     if (initialDate !== 0) {
       for (let date = initialDay; date > 0; date -= 1) {
@@ -24,10 +25,11 @@ function rows ({ datesEl, initialDate, input }) {
     }
     for (let date = initialDay; date < 7; date += 1) {
       let active = null
-      if (daysLeft < daysInMonth) {
-        if (daysLeft >= today) active = 'calendar__date--active'
-      } else {
+      if (daysLeft < daysInMonth && actualMonth) {
+        if (daysLeft >= (today - 1)) active = 'calendar__date--active'
+      } else if (actualMonth) {
         daysLeft = 0
+        actualMonth = false
       }
       daysLeft += 1
       datesHtml += `<div class="calendar__date ${active}">${daysLeft}</div>`
