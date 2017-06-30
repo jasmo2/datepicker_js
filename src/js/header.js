@@ -41,7 +41,7 @@ class CalendarHeader {
     const { setInitialDate } = this
 
     const dates = input.parentElement.querySelector('.calendar .calendar__dates ')
-    dates.remove()
+
     let newInitialDate = null
     let year = initialDate.getFullYear()
     let month = initialDate.getMonth()
@@ -65,6 +65,11 @@ class CalendarHeader {
     const myDate = new MyDate(newInitialDate)
     monthEl.innerText = myDate.monthName()
     const calendarDates = new CalendarDates({ input, initialDate: newInitialDate })
+
+    dates.childNodes.forEach((element) => {
+      element.removeEventListener('click', calendarDates.clickable, true)
+    }, this)
+    dates.remove()
     input.parentElement.querySelector('.calendar').appendChild(calendarDates.render())
   }
 
