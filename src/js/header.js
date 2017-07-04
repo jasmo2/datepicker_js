@@ -6,33 +6,51 @@ class CalendarHeader {
     this.headerBuilder = this.headerBuilder.bind(this)
     this.setInitialDate = this.setInitialDate.bind(this)
     this.changeMonth = this.changeMonth.bind(this)
+    this.prevEl = this.prevEl.bind(this)
+    this.monthEl = this.monthEl.bind(this)
+    this.nextEl = this.nextEl.bind(this)
     this.state = { initialDate: props.initialDate, input: props.input }
   }
 
-  headerBuilder () {
-    const { initialDate } = this.state
-    const { changeMonth } = this
-    let headerEl = document.createElement('div')
-    const myDate = new MyDate(initialDate)
-    headerEl.className = 'calendar__month'
-    // headerEl.innerHTML = header
+  prevEl () {
     const prev = document.createElement('div')
     prev.className = 'calendar__prev'
     prev.innerHTML = '&lt;&lt;'
-    prev.addEventListener('click', (e) => changeMonth({ direction: 'prev', monthEl: month }))
+    prev.addEventListener('click', (e) => this.changeMonth({ direction: 'prev', monthEl: this.month }))
+
+    return prev
+  }
+
+  monthEl () {
+    const { initialDate } = this.state
+    const myDate = new MyDate(initialDate)
 
     const month = document.createElement('div')
     month.className = 'calendar__month-name'
     month.innerText = myDate.monthName()
+    this.month = month
 
+    return month
+  }
+
+  nextEl () {
     const next = document.createElement('div')
     next.className = 'calendar__next'
     next.innerHTML = '&gt;&gt'
-    next.addEventListener('click', (e) => changeMonth({ direction: 'next', monthEl: month }))
+    next.addEventListener('click', (e) => this.changeMonth({ direction: 'next', monthEl: this.month }))
 
-    headerEl.appendChild(prev)
-    headerEl.appendChild(month)
-    headerEl.appendChild(next)
+    return next
+  }
+
+  headerBuilder () {
+    const { prevEl, monthEl, nextEl } = this
+    let headerEl = document.createElement('div')
+    headerEl.className = 'calendar__month'
+    // headerEl.innerHTML = header
+
+    headerEl.appendChild(prevEl())
+    headerEl.appendChild(monthEl())
+    headerEl.appendChild(nextEl())
     return headerEl
   }
 
